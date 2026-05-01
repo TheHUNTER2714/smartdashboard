@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Theme: "Aurora Cyber" — teal/cyan + emerald with magenta accent */
+  :root {
+    --background: 200 40% 97%;
+    --foreground: 200 40% 8%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 200 40% 8%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 200 40% 8%;
+
+    --primary: 178 85% 38%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 158 80% 50%;
+
+    --secondary: 195 30% 94%;
+    --secondary-foreground: 200 40% 12%;
+
+    --muted: 195 25% 93%;
+    --muted-foreground: 200 12% 42%;
+
+    --accent: 320 85% 58%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 195 25% 86%;
+    --input: 195 25% 90%;
+    --ring: 178 85% 38%;
+
+    --radius: 1rem;
+
+    --gradient-primary: linear-gradient(135deg, hsl(178 85% 38%), hsl(158 80% 50%), hsl(320 85% 58%));
+    --gradient-hero: linear-gradient(135deg, hsl(178 85% 38% / 0.18), hsl(320 85% 58% / 0.15));
+    --gradient-glow: radial-gradient(circle at 50% 50%, hsl(178 85% 38% / 0.3), transparent 70%);
+
+    --glass-bg: 0 0% 100% / 0.6;
+    --glass-border: 195 30% 80% / 0.5;
+
+    --shadow-glow: 0 0 40px hsl(178 85% 38% / 0.4);
+    --shadow-elegant: 0 20px 60px -20px hsl(178 85% 38% / 0.3);
+    --shadow-glass: 0 8px 32px hsl(200 40% 10% / 0.1);
+  }
+
+  .dark {
+    --background: 200 50% 5%;
+    --foreground: 180 20% 95%;
+
+    --card: 200 45% 8%;
+    --card-foreground: 180 20% 95%;
+
+    --popover: 200 45% 8%;
+    --popover-foreground: 180 20% 95%;
+
+    --primary: 175 90% 55%;
+    --primary-foreground: 200 50% 5%;
+    --primary-glow: 158 85% 60%;
+
+    --secondary: 200 40% 12%;
+    --secondary-foreground: 180 20% 95%;
+
+    --muted: 200 35% 13%;
+    --muted-foreground: 180 12% 65%;
+
+    --accent: 320 90% 65%;
+    --accent-foreground: 200 50% 5%;
+
+    --destructive: 0 75% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 200 30% 18%;
+    --input: 200 30% 14%;
+    --ring: 175 90% 55%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(175 90% 55%), hsl(158 85% 60%), hsl(320 90% 65%));
+    --gradient-hero: linear-gradient(135deg, hsl(175 90% 55% / 0.22), hsl(320 90% 65% / 0.18));
+    --gradient-glow: radial-gradient(circle at 50% 50%, hsl(175 90% 55% / 0.4), transparent 70%);
+
+    --glass-bg: 200 45% 8% / 0.55;
+    --glass-border: 175 60% 50% / 0.25;
+
+    --shadow-glow: 0 0 60px hsl(175 90% 55% / 0.5);
+    --shadow-elegant: 0 20px 60px -20px hsl(175 90% 55% / 0.4);
+    --shadow-glass: 0 8px 32px hsl(0 0% 0% / 0.5);
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+  h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; }
+}
+
+@layer components {
+  .glass {
+    background: hsl(var(--glass-bg));
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--glass-border));
+    box-shadow: var(--shadow-glass);
+  }
+
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .gradient-bg { background: var(--gradient-primary); }
+  .hero-bg { background: var(--gradient-hero); }
+  .glow-bg { background: var(--gradient-glow); }
+
+  .float-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.5;
+    animation: float 8s ease-in-out infinite;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -30px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.95); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px hsl(var(--primary) / 0.5); }
+  50% { box-shadow: 0 0 50px hsl(var(--primary) / 0.8); }
+}
